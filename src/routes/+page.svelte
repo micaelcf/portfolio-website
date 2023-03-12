@@ -6,12 +6,12 @@
 	import Projects from '$lib/components/Projects.svelte';
 	import gsap from 'gsap';
 	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-	// gsap.registerPlugin(ScrollTrigger);
 	import { onMount } from 'svelte';
 
 	let mainDiv: Element;
 	let sections: Element[];
 	onMount(() => {
+		gsap.registerPlugin(ScrollTrigger);
 		sections = gsap.utils.toArray<Element>('section');
 
 		gsap.to(sections, {
