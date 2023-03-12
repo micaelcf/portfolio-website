@@ -6,7 +6,7 @@
 	import Projects from '$lib/components/Projects.svelte';
 	import gsap from 'gsap';
 	import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-	gsap.registerPlugin(ScrollTrigger);
+	// gsap.registerPlugin(ScrollTrigger);
 	import { onMount } from 'svelte';
 
 	let mainDiv: Element;
