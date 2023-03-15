@@ -36,6 +36,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"gsap": "^3.11.4"
+		"animejs": "^3.2.1"
 	}
 }

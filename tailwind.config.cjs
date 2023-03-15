@@ -36,9 +36,22 @@ module.exports = {
 					700: '#898989',
 					800: '#5c5c5c',
 					900: '#2e2e2e'
+				},
+				brow: {
+					100: '#f6ece0',
+					200: '#eddac2',
+					300: '#e3c7a3',
+					400: '#dab585',
+					500: '#d1a266',
+					600: '#a78252',
+					700: '#7d613d',
+					800: '#544129',
+					900: '#2a2014'
 				}
 			},
-			fontFamily: {},
+			fontFamily: {
+				concert: ['Concert One', 'cursive']
+			},
 			variables: {}
 		}
 	},
