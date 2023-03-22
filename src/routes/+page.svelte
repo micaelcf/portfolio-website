@@ -4,7 +4,6 @@
 	import Contact from '$lib/components/Contact.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Projects from '$lib/components/Projects.svelte';
-
 	import { onMount } from 'svelte';
 
 	let mainDiv; //: Element;
@@ -24,7 +23,7 @@
 		<div class="w-fit ml-auto font-sans">Dev</div>
 	</div> -->
 <div id="mainDiv" class="">
-	<section class="bg-blue-300"><Hero /></section>
+	<section class=" bg-webemerald-400"><Hero /></section>
 	<section class="bg-yellow-300"><About /></section>
 	<section bind:this={abt} class="bg-cyan-300"><Projects /></section>
 	<section class="bg-red-300"><Contact /></section>
