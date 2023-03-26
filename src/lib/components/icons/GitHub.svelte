@@ -9,3 +9,5 @@
 		/></g
 	>
 </svg>
+
+<!-- original color #181616 -->

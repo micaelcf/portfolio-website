@@ -1,57 +1,129 @@
 <script lang="ts">
+	import NavBar from '$lib/components/NavBar.svelte';
+
 	import '../app.postcss';
 	import About from '$lib/components/About.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Projects from '$lib/components/Projects.svelte';
 	import { onMount } from 'svelte';
+	import { scrollPercent } from '$lib/stores';
+	//@ts-ignore
+	import anime from 'animejs/lib/anime.es.js';
+	//@ts-ignore
+	import Sparticles from 'sparticles';
+	import { getScrollPercent, particlesOptions } from '$lib/utils';
+	import { append, append_dev, query_selector_all } from 'svelte/internal';
 
-	let mainDiv; //: Element;
-	let abt: Element;
+	let mainDiv: Element;
+	let dHeight: number;
+	let nav: Element;
 	let sections; //: Element[];
-	let y: number;
+	let windowHeight: number;
 
-	// $: console.log(y);
-	// $: console.log(visualViewport?.width);
+	let anim: any;
+	let randArray: number[][];
+	function getRandomIntInclusive(min: number, max: number) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+	}
+	// function getRandomShadows(n: number, height = 2000, blur = 1) {
+	// 	let shadows = `${getRandomIntInclusive(0, height)}px ${getRandomIntInclusive(
+	// 		0,
+	// 		height
+	// 	)}px ${blur}px rgba(255,255,255,0.6)`;
+	// 	for (let i = 0; i < n - 1; i++) {
+	// 		shadows += `,${getRandomIntInclusive(0, height)}px ${getRandomIntInclusive(
+	// 			0,
+	// 			height
+	// 		)}px ${blur}px rgba(255,255,255,0.6)`;
+	// 	}
+	// 	return shadows;
+	// }
 
-	onMount(() => {});
+	function addParticles(node: Node) {
+		new Sparticles(node, particlesOptions);
+	}
+
+	$: randArray = [...Array(7)].map(() => [
+		getRandomIntInclusive(5, 15),
+		getRandomIntInclusive(5, 40),
+		getRandomIntInclusive(5, 40)
+	]);
+	// let lenis: Lenis;
+	onMount(() => {
+		windowHeight = self.innerHeight;
+		// const smShadows = getRandomShadows(800, self.innerHeight * 8);
+		// const mdShadows = getRandomShadows(300, self.innerHeight * 8);
+		// const lgShadows = getRandomShadows(150, self.innerHeight * 8);
+		mainDiv = document.querySelector('#mainDiv') as Element;
+		dHeight = mainDiv.getBoundingClientRect().height;
+		self.addEventListener('scroll', () => {
+			scrollPercent.set(getScrollPercent(self.scrollY, mainDiv.scrollHeight));
+		});
+		// anime({
+		// 	targets: '.ssm',
+		// 	// top: self.innerHeight,
+		// 	boxShadow: { value: smShadows, duration: 100, easing: 'linear' },
+		// 	// top: self.innerHeight,
+		// 	easing: 'linear',
+		// 	duration: 50_000,
+		// 	// loop: true,
+		// 	direction: 'alternate'
+		// });
+		// anime({
+		// 	targets: '.md',
+		// 	boxShadow: { value: mdShadows, duration: 100, easing: 'linear' },
+		// 	// top: self.innerHeight,
+		// 	easing: 'linear',
+		// 	duration: 100_000
+		// 	// loop: true
+		// 	// direction: 'alternate'
+		// });
+		// anime({
+		// 	targets: '.g',
+		// 	boxShadow: { value: lgShadows, duration: 100, easing: 'linear' },
+		// 	// top: self.innerHeight,
+		// 	easing: 'linear',
+		// 	duration: 130_000,
+		// 	loop: true,
+		// 	direction: 'alternate'
+		// });
+	});
 </script>
 
-<!-- <div class="bg-blue-300 dark:bg-cyan-800 w-full h-full"> -->
-<!-- <div class="w-fit m-logo text-xl md:text-4xl text-white p-2">
-		Micael
-		<div class="w-fit ml-auto font-sans">Dev</div>
+<div id="mainDiv" class=" text-black">
+	<NavBar />
+	<section class="normal"><Hero /></section>
+	<section class="normal"><About /></section>
+	<section class="normal"><Projects /></section>
+	<section class=""><Contact /></section>
+	<div use:addParticles style="top:{windowHeight}px;" class="absolute w-full h-[300vh]" />
+
+	<!-- <div id="particules">
+		<div style="" class="sm w-1 h-1" />
+		<div style="" class="md w-2 h-2" />
+		<div style="" class="lg w-3 h-3" />
 	</div> -->
-<div id="mainDiv" class="">
-	<section class=" bg-webemerald-400"><Hero /></section>
-	<section class="bg-yellow-300"><About /></section>
-	<section bind:this={abt} class="bg-cyan-300"><Projects /></section>
-	<section class="bg-red-300"><Contact /></section>
 </div>
 
-<!-- <div class="fixed bottom-0">
-		<svg
-			id="visual"
-			viewBox="0 0 2440 540"
-			width="2440"
-			height="540"
-			xmlns="http://www.w3.org/2000/svg"
-			xmlns:xlink="http://www.w3.org/1999/xlink"
-			version="1.1"
-			><path
-				d="M0 465L22.7 467C45.3 469 90.7 473 135.8 476.8C181 480.7 226 484.3 271.2 477.3C316.3 470.3 361.7 452.7 406.8 446.3C452 440 497 445 542.2 450.7C587.3 456.3 632.7 462.7 677.8 470.7C723 478.7 768 488.3 813.2 490.7C858.3 493 903.7 488 948.8 475.8C994 463.7 1039 444.3 1084.2 442.7C1129.3 441 1174.7 457 1220 458.3C1265.3 459.7 1310.7 446.3 1355.8 437.7C1401 429 1446 425 1491.2 425.8C1536.3 426.7 1581.7 432.3 1626.8 438.2C1672 444 1717 450 1762.2 450.7C1807.3 451.3 1852.7 446.7 1897.8 444.7C1943 442.7 1988 443.3 2033.2 446.8C2078.3 450.3 2123.7 456.7 2168.8 460.2C2214 463.7 2259 464.3 2304.2 463.5C2349.3 462.7 2394.7 460.3 2417.3 459.2L2440 458L2440 541L2417.3 541C2394.7 541 2349.3 541 2304.2 541C2259 541 2214 541 2168.8 541C2123.7 541 2078.3 541 2033.2 541C1988 541 1943 541 1897.8 541C1852.7 541 1807.3 541 1762.2 541C1717 541 1672 541 1626.8 541C1581.7 541 1536.3 541 1491.2 541C1446 541 1401 541 1355.8 541C1310.7 541 1265.3 541 1220 541C1174.7 541 1129.3 541 1084.2 541C1039 541 994 541 948.8 541C903.7 541 858.3 541 813.2 541C768 541 723 541 677.8 541C632.7 541 587.3 541 542.2 541C497 541 452 541 406.8 541C361.7 541 316.3 541 271.2 541C226 541 181 541 135.8 541C90.7 541 45.3 541 22.7 541L0 541Z"
-				fill="#0066FF"
-				stroke-linecap="round"
-				stroke-linejoin="miter"
-			/></svg
-		>
-	</div> -->
-
-<!-- </div> -->
 <style>
 	#mainDiv {
+		@apply w-full h-full;
+		scroll-behavior: smooth;
+		/* overflow-y: scroll;] */
+		/* overflow-y: scroll;
+		overflow-x: hidden; */
+		/* scroll-snap-type: y proximity; */
 	}
 	#mainDiv > section {
-		@apply w-full h-screen flex justify-center items-center;
+		@apply w-full h-screen border-t-2;
+		/* scroll-snap-align: center; */
+		/* scroll-margin-top: 90px; */
 	}
+
+	/* #particules > div {
+		@apply rounded-full absolute top-[100vh] blur-[.5px];
+	} */
 </style>
