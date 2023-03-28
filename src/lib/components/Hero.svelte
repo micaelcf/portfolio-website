@@ -1,16 +1,27 @@
 <script lang="ts">
 	import profile from '$lib/assets/profile.webp';
 	import { onMount, query_selector_all } from 'svelte/internal';
-	import { ComputerDesktop } from 'svelte-heros-v2';
+	import { ComputerDesktop, Cloud } from 'svelte-heros-v2';
 	// import Facebook from 'svelte-simples/Facebook.svelte';
 	//@ts-ignore
 	import anime from 'animejs/lib/anime.es.js';
 	import LinkedIn from './icons/LinkedIn.svelte';
 	import GitHub from './icons/GitHub.svelte';
 	import { getOptionsD, wavePaths } from '$lib/wavesPaths';
-	//}
-	let img: Element;
 	let waveHand: Element;
+
+	function cloudAnim(node: Node) {
+		const rect = (node as Element).getBoundingClientRect();
+		anime({
+			targets: node,
+			translateX: -rect.left - rect.width + 6,
+			duration: 10000,
+			easing: 'easeOutCirc',
+			complete: (anim: anime) => {
+				anim.remove(node);
+			}
+		});
+	}
 
 	onMount(() => {
 		const poped = query_selector_all('.pop');
@@ -36,7 +47,7 @@
 			}
 		});
 		anime.set('.svg', {
-			marginTop: -self.innerHeight + 217
+			// marginTop: -self.innerHeight + 217
 		});
 		for (let i = 0; i < wavePaths.length; i++) {
 			anime({
@@ -50,12 +61,13 @@
 	});
 </script>
 
-<div
-	class="flex z-40 flex-col-reverse md:flex-row items-center justify-center h-full w-full bg-sky-200"
->
+<div class="flex flex-col-reverse md:flex-row items-center justify-center h-full w-full bg-sky-200">
 	<div class="flex flex-col">
+		<div use:cloudAnim class=" absolute w-32 h-fit opacity-[.45] z-auto">
+			<Cloud class="stroke-[0.1]  fill-white " size="100%" />
+		</div>
 		<div
-			class="flex flex-col items-start gap-3 border-2 border-[#3e3e3e] p-1 md:p-2 pop max-w-xs md:max-w-sm"
+			class="flex z-10 flex-col items-start gap-3 border-2 border-[#3e3e3e] p-1 md:p-2 max-w-xs md:max-w-sm"
 		>
 			<h1 class="m-0 flex flex-row items-end text-2xl md:text-3xl">
 				Hello everyone
@@ -94,7 +106,6 @@
 			</a>
 		</div>
 		<img
-			bind:this={img}
 			style=" box-shadow: none"
 			class=" w-40 md:w-48 md:ml-12 pop border-2 border-[#3e3e3e] rounded-xl"
 			src={profile}
@@ -102,7 +113,7 @@
 		/>
 	</div>
 </div>
-<div class="z-40 bg-transparent svg overflow-hidden">
+<div class="z-40 w-full bg-transparent absolute top-[calc(100vh-399px)] svg overflow-hidden">
 	<svg
 		id="visual"
 		viewBox="0 0 960 400"

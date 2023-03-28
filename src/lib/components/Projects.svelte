@@ -8,7 +8,7 @@
 	onMount(() => {
 		let anim = anime({
 			targets: h1Text,
-			translateX: [-self.innerWidth / 2, 0],
+			translateX: [-self.innerWidth, 0],
 			translateY: [-0, 50, -50, 50, -50, 50, -44],
 			easing: 'linear'
 		});
