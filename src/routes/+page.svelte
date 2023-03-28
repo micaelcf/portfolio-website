@@ -11,20 +11,15 @@
 	//@ts-ignore
 	import anime from 'animejs/lib/anime.es.js';
 	//@ts-ignore
-	import Sparticles from 'sparticles';
-	import {
-		cloudParticlesOptions,
-		getRandomIntInclusive,
-		getScrollPercent,
-		particlesOptions
-	} from '$lib/utils';
+	// import Sparticles from 'sparticles';
+	import { cloudParticlesOptions, getScrollPercent, particlesOptions } from '$lib/utils';
 	import { append, append_dev, query_selector_all } from 'svelte/internal';
 
 	let mainDiv: Element;
 
-	function addParticles(node: Node, options = particlesOptions) {
-		new Sparticles(node, options);
-	}
+	// function addParticles(node: Node, options = particlesOptions) {
+	// 	new Sparticles(node, options);
+	// }
 
 	onMount(() => {
 		mainDiv = document.querySelector('#mainDiv') as Element;
@@ -36,12 +31,12 @@
 
 <div id="mainDiv" class=" text-black">
 	<NavBar />
-	<div use:addParticles={cloudParticlesOptions} class="absolute top-0 w-full h-screen" />
 	<section class="normal"><Hero /></section>
 	<section class="normal"><About /></section>
 	<section class="normal"><Projects /></section>
 	<section class=""><Contact /></section>
-	<div use:addParticles style="top:100vh;" class="absolute w-full h-[300vh]" />
+	<!-- <div use:addParticles style="top:100vh;" class="absolute w-full h-[300vh]" />
+	<div use:addParticles={cloudParticlesOptions} class="absolute top-0 z-auto w-full h-screen" /> -->
 </div>
 
 <style>
@@ -54,7 +49,7 @@
 		/* scroll-snap-type: y proximity; */
 	}
 	#mainDiv > section {
-		@apply w-full h-screen border-t-2;
+		@apply w-full h-screen;
 		/* scroll-snap-align: center; */
 		/* scroll-margin-top: 90px; */
 	}

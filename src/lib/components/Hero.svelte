@@ -8,20 +8,10 @@
 	import LinkedIn from './icons/LinkedIn.svelte';
 	import GitHub from './icons/GitHub.svelte';
 	import { getOptionsD, wavePaths } from '$lib/wavesPaths';
+	import { getRandomIntInclusive } from '$lib/utils';
 	let waveHand: Element;
 
-	function cloudAnim(node: Node) {
-		const rect = (node as Element).getBoundingClientRect();
-		anime({
-			targets: node,
-			translateX: -rect.left - rect.width + 6,
-			duration: 10000,
-			easing: 'easeOutCirc',
-			complete: (anim: anime) => {
-				anim.remove(node);
-			}
-		});
-	}
+	let randArray = [];
 
 	onMount(() => {
 		const poped = query_selector_all('.pop');
@@ -58,16 +48,15 @@
 				loop: true
 			});
 		}
+		randArray = [...Array(10).keys()].map((x) => getRandomIntInclusive(0, self.innerHeight - 200));
+		// console.log(randArray);
 	});
 </script>
 
 <div class="flex flex-col-reverse md:flex-row items-center justify-center h-full w-full bg-sky-200">
-	<div class="flex flex-col">
-		<div use:cloudAnim class=" absolute w-32 h-fit opacity-[.45] z-auto">
-			<Cloud class="stroke-[0.1]  fill-white " size="100%" />
-		</div>
+	<div class="flex flex-col z-20">
 		<div
-			class="flex z-10 flex-col items-start gap-3 border-2 border-[#3e3e3e] p-1 md:p-2 max-w-xs md:max-w-sm"
+			class="flex flex-col items-start gap-3 border-2 border-[#3e3e3e] p-1 md:p-2 max-w-xs md:max-w-sm pop"
 		>
 			<h1 class="m-0 flex flex-row items-end text-2xl md:text-3xl">
 				Hello everyone
@@ -96,7 +85,7 @@
 		</div>
 	</div>
 
-	<div class="flex mb-4 md:mt-0 md:-top-9 md:relative">
+	<div class="flex mb-4 md:mt-0 md:-top-9 md:relative z-20">
 		<div class="flex md:hidden flex-col gap-3 pop mr-5 w-fit h-fit p-2 border-2 border-[#3e3e3e]">
 			<a href="https://www.linkedin.com/in/micael-fernandes21/" class="w-10">
 				<LinkedIn />
@@ -106,14 +95,13 @@
 			</a>
 		</div>
 		<img
-			style=" box-shadow: none"
 			class=" w-40 md:w-48 md:ml-12 pop border-2 border-[#3e3e3e] rounded-xl"
 			src={profile}
 			alt="Micael Fernandes"
 		/>
 	</div>
 </div>
-<div class="z-40 w-full bg-transparent absolute top-[calc(100vh-399px)] svg overflow-hidden">
+<div class="z-10 w-full bg-transparent absolute top-[calc(100vh-399px)] svg overflow-hidden">
 	<svg
 		id="visual"
 		viewBox="0 0 960 400"
