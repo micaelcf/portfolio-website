@@ -10,18 +10,6 @@
 	let projects: Element;
 	let contact: Element;
 
-	// const moveBar = (el: Element) => {
-	// 	const rect = el.getBoundingClientRect();
-	// 	const w = 50;
-	// 	anime({
-	// 		targets: '#bar',
-	// 		width: w,
-	// 		height: 4,
-	// 		left: rect.left + rect.width / 2 - w / 2,
-	// 		top: home.getBoundingClientRect().bottom + 4,
-	// 		easing: 'easeInOutElastic'
-	// 	});
-	// };
 	const moveCloud = (el: Element) => {
 		const pad = 10;
 		// anime.set('#cloud', {
@@ -47,7 +35,6 @@
 	}
 
 	onMount(() => {
-		// moveBar(home);
 		moveCloud(home);
 		[home, about, projects, contact].forEach((el) => {
 			el.addEventListener('mouseover', handleClick);

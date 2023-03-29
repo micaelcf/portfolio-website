@@ -1,4 +1,5 @@
 import cloud from './assets/cloud.svg';
+
 export function getScrollPercent(
 	scrollY = document.body.scrollTop,
 	biggerHeight = document.body.scrollHeight,
@@ -7,16 +8,10 @@ export function getScrollPercent(
 	return (scrollY / (biggerHeight - smallerHeight)) * 100;
 }
 
-export function getRandomIntInclusive(min: number, max: number) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
-}
-
 export const particlesOptions = {
 	composition: 'source-over',
 	count: 150,
-	speed: 4.5,
+	speed: 2,
 	parallax: 1,
 	direction: 0,
 	xVariance: 2,

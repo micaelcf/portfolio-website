@@ -1,17 +1,28 @@
 <script lang="ts">
 	import profile from '$lib/assets/profile.webp';
 	import { onMount, query_selector_all } from 'svelte/internal';
-	import { ComputerDesktop, Cloud } from 'svelte-heros-v2';
+	import { ComputerDesktop } from 'svelte-heros-v2';
 	// import Facebook from 'svelte-simples/Facebook.svelte';
 	//@ts-ignore
 	import anime from 'animejs/lib/anime.es.js';
 	import LinkedIn from './icons/LinkedIn.svelte';
 	import GitHub from './icons/GitHub.svelte';
 	import { getOptionsD, wavePaths } from '$lib/wavesPaths';
-	import { getRandomIntInclusive } from '$lib/utils';
+	// import { getRandomIntInclusive } from '$lib/utils';
 	let waveHand: Element;
 
-	let randArray = [];
+	function cloudAnim(node: Node) {
+		const rect = (node as Element).getBoundingClientRect();
+		anime({
+			targets: node,
+			translateX: -rect.left - rect.width + 6,
+			duration: 10000,
+			easing: 'easeOutCirc',
+			complete: (anim: anime) => {
+				anim.remove(node);
+			}
+		});
+	}
 
 	onMount(() => {
 		const poped = query_selector_all('.pop');
@@ -36,9 +47,6 @@
 				});
 			}
 		});
-		anime.set('.svg', {
-			// marginTop: -self.innerHeight + 217
-		});
 		for (let i = 0; i < wavePaths.length; i++) {
 			anime({
 				targets: `#w${i + 1}`,
@@ -48,7 +56,7 @@
 				loop: true
 			});
 		}
-		randArray = [...Array(10).keys()].map((x) => getRandomIntInclusive(0, self.innerHeight - 200));
+		// randArray = [...Array(10).keys()].map((x) => getRandomIntInclusive(0, self.innerHeight - 200));
 		// console.log(randArray);
 	});
 </script>
@@ -56,7 +64,7 @@
 <div class="flex flex-col-reverse md:flex-row items-center justify-center h-full w-full bg-sky-200">
 	<div class="flex flex-col z-20">
 		<div
-			class="flex flex-col items-start gap-3 border-2 border-[#3e3e3e] p-1 md:p-2 max-w-xs md:max-w-sm pop"
+			class="flex flex-col items-start gap-3 border-2 border-[#3e3e3e] p-1 md:p-2 pop max-w-xs md:max-w-sm"
 		>
 			<h1 class="m-0 flex flex-row items-end text-2xl md:text-3xl">
 				Hello everyone
@@ -75,7 +83,7 @@
 				Full stack developer at heart, with an emphasis on the front-end and user-friendly interfaces
 			</h1>
 		</div>
-		<div class="hidden md:flex flex-row mt-3 ml-2 pop w-fit border-2 border-[#3e3e3e]">
+		<div class="z-20 hidden md:flex flex-row mt-3 ml-2 pop w-fit border-2 border-[#3e3e3e]">
 			<a href="https://www.linkedin.com/in/micael-fernandes21/" class="w-12 p-2 hover:bg-black/20">
 				<LinkedIn />
 			</a>
@@ -85,7 +93,7 @@
 		</div>
 	</div>
 
-	<div class="flex mb-4 md:mt-0 md:-top-9 md:relative z-20">
+	<div class="z-20 flex mb-4 md:mt-0 md:-top-9 md:relative">
 		<div class="flex md:hidden flex-col gap-3 pop mr-5 w-fit h-fit p-2 border-2 border-[#3e3e3e]">
 			<a href="https://www.linkedin.com/in/micael-fernandes21/" class="w-10">
 				<LinkedIn />
@@ -95,6 +103,7 @@
 			</a>
 		</div>
 		<img
+			style=" box-shadow: none"
 			class=" w-40 md:w-48 md:ml-12 pop border-2 border-[#3e3e3e] rounded-xl"
 			src={profile}
 			alt="Micael Fernandes"
