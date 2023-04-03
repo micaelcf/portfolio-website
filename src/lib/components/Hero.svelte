@@ -52,10 +52,12 @@
         <GitHub />
       </a>
     </div>
-    <img
-      style=" box-shadow: none"
-      class=" w-40 md:w-48 md:ml-12 pop border-2 border-[#3e3e3e] rounded-xl"
-      src={avatar}
-      alt="Micael Fernandes" />
+    <div class="ring-2 w-fit md:ml-12">
+      <img
+  style=" box-shadow: none"
+        class=" w-40 md:w-48 pop border-2 border-[#3e3e3e] rounded-xl"
+        src={avatar}
+        alt="Micael Fernandes" />
+    </div>
   </div>
 </div>

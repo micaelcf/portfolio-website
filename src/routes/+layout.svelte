@@ -1,9 +1,8 @@
 <script lang="ts">
-  import PolyBackground from "$lib/components/PolyBackground.svelte";
+	import NavBar from "$lib/components/NavBar.svelte";
   import "../app.postcss";
 </script>
 
-<div>
-  <PolyBackground />
+<div class=" bg-gray-300"><NavBar/>
   <slot />
 </div>

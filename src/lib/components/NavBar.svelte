@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { AtSymbol, Cube, Home, Identification } from 'svelte-heros-v2';
 	import { onMount } from 'svelte/internal';
-	//@ts-ignore
-	import anime from 'animejs/lib/anime.es.js';
-	import { currentSection } from '$lib/stores';
+	import anime from 'animejs';
 
 	let mainDiv: Element;
 	let home: Element;
@@ -45,6 +43,8 @@
 			});
 		});
 	});
+
+	const btnClass = `flex flex-col md:flex-row gap-px md:gap-1 p-0 items-center`
 </script>
 
 <div class="">
@@ -52,28 +52,22 @@
 		bind:this={mainDiv}
 		class=" w-full absolute top-0 z-10 md:py-3 flex flex-row items-center justify-evenly md:justify-end pr-1 gap-4"
 	>
-		<button value="0" bind:this={home} on:click={handleClick} class="btn">
+		<button value="0" bind:this={home} on:click={handleClick} class="{btnClass}">
 			<Home size="100%" class="w-6 pointer-events-none" tabindex="-1" />
 			Home
 		</button>
-		<button value="1" bind:this={about} on:click={handleClick} class="btn">
+		<button value="1" bind:this={about} on:click={handleClick} class="{btnClass}">
 			<Identification tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			About
 		</button>
-		<button value="2" bind:this={projects} on:click={handleClick} class="btn">
+		<button value="2" bind:this={projects} on:click={handleClick} class="{btnClass}">
 			<Cube class="w-6 pointer-events-none" tabindex="-1" size="100%" />
 			Projects
 		</button>
-		<button value="3" bind:this={contact} on:click={handleClick} class="btn md:mr-1">
+		<button value="3" bind:this={contact} on:click={handleClick} class="{btnClass} md:mr-1">
 			<AtSymbol tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			Contact
 		</button>
 	</div>
-	<div id="cloud" style="wid" class="absolute rounded-lg z-0 right-0 bg-white/60" />
+	<div id="cloud" class="absolute rounded-lg z-0 right-0 bg-white/60" />
 </div>
-
-<style>
-	.btn {
-		@apply flex flex-col md:flex-row gap-px md:gap-1 p-0 items-center;
-	}
-</style>
