@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import circuit from '$lib/assets/circuit-board.svg';
 	import NavBar from '$lib/components/NavBar.svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import { currentPage } from '$lib/stores';

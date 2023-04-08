@@ -6,16 +6,8 @@
 	import { goto } from '$app/navigation';
 
 	import { page } from '$app/stores';
-
 	let mainDiv: Element;
 	let active: Element;
-	let cloudMoving = false;
-
-	// $: Array.from(mainDiv.children).forEach((el) => {
-	// 	if ((el as HTMLButtonElement).value === $page.route.id?.replace('/', '')) {
-	// 		console.log(el);
-	// 	}
-	// });
 
 	const moveCloud = (el: Element) => {
 		const pad = 10;

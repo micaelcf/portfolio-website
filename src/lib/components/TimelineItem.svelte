@@ -1,8 +1,6 @@
 <script lang="ts">
-	import anime from 'animejs';
-	import { onMount } from 'svelte';
 	import { AcademicCap } from 'svelte-heros-v2';
-	// export const data: {date: Date; label: string; icon: SvelteComponent};
+
 	export let data: { date: Date; label: string; icon: typeof AcademicCap } = {
 		date: new Date(),
 		label: 'Something happened',

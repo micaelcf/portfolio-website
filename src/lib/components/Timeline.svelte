@@ -3,7 +3,7 @@
 	import { AcademicCap } from 'svelte-heros-v2';
 	import TimelineItem from './TimelineItem.svelte';
 	import { onMount } from 'svelte';
-	import { getScrollPercent } from '$lib/utils';
+
 	export let items = [
 		{ date: new Date('2019-01-02'), label: 'Something happened', icon: AcademicCap }
 	];
