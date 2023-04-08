@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Space+Grotesk&family=Concert+One&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	p {
+		font-family: 'Nunito', sans-serif;
+
+		/* -webkit-overflow-scrolling: touch;
+		overflow-scrolling: touch; */
+	}
+
+	h1 {
+		font-family: 'Space Grotesk', sans-serif;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+}
+
+@layer components {
+	.standard-container-col {
+		@apply flex flex-col justify-center items-center;
+	}
+
+	.standard-container-row {
+		@apply flex flex-row justify-center items-center;
+	}
+
+	.bg-default {
+		@apply bg-pink-500 dark:bg-lime-500;
+	}
+
+	.text-colored-default {
+		@apply text-pink-500 dark:text-lime-500;
+	}
+}
