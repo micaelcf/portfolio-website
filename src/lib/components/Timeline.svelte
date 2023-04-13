@@ -9,8 +9,7 @@
 	];
 	let progress: Element;
 	let mainDiv: Element;
-	const updatePosition = (ref: Element) => {
-		// console.log(mainDiv.parentElement?.offsetTop);
+	const updatePosition = (ref: Element, ended = false) => {
 		anime.set(progress, {
 			top: mainDiv.parentElement!.offsetTop,
 			left:
@@ -28,22 +27,52 @@
 			return child.children[0].children[0].children[0];
 		});
 
-		updatePosition(firstPoint);
-		self.addEventListener('resize', () => updatePosition(firstPoint));
-
-		let progressAnim = anime({
-			targets: progress,
-			height: mainDiv.getBoundingClientRect().height + 22,
-			duration: 2000,
-			easing: 'easeInOutSine'
-		});
-		anime({
+		// updatePosition(firstPoint);
+		// self.addEventListener('resize', () => updatePosition(firstPoint, progressAnim.progress >= 100));
+		const timeDuration = 3000;
+		let progressAnim = (h: number) => {
+			anime({
+				targets: progress,
+				height: h,
+				duration: timeDuration,
+				easing: 'easeInOutSine',
+				begin: () => {
+					updatePosition(firstPoint);
+				}
+			});
+		};
+		let iconsAnim = anime({
 			targets: icons,
 			strokeDashoffset: [anime.setDashoffset, 0],
 			easing: 'linear',
 			duration: 2000,
-			delay: anime.stagger(progressAnim.duration / icons.length, { start: 500 })
+			delay: anime.stagger(timeDuration / icons.length, { start: 500 }),
+			autoplay: false
 		});
+
+		// define as opções de observação
+		const opcoes = {
+			rootMargin: '0px',
+			threshold: 0.68 // define a porcentagem de visibilidade do elemento para disparar a ação
+		};
+
+		const observer = new IntersectionObserver(([entry]) => {
+			if (entry.isIntersecting) {
+				console.log('Elemento está visível!');
+				// execute a ação que você deseja quando o elemento estiver visível
+				// por exemplo, adicione uma classe CSS ou faça uma animação
+				progressAnim(mainDiv.getBoundingClientRect().height + 22);
+				iconsAnim.play();
+				self.addEventListener('resize', () => {
+					progressAnim(mainDiv.getBoundingClientRect().height + 22);
+					// updatePosition(firstPoint);
+					iconsAnim.restart();
+				});
+				observer.disconnect();
+			}
+		}, opcoes);
+
+		observer.observe(mainDiv);
 	});
 </script>
 

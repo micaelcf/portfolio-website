@@ -68,7 +68,7 @@
 <div class="">
 	<div
 		bind:this={mainDiv}
-		class=" w-full absolute top-0 z-10 md:py-3 flex flex-row items-center justify-evenly md:justify-end pr-1 gap-4"
+		class=" w-full absolute top-0 z-10 md:py-3 md:pl-5 flex flex-row items-center justify-evenly md:justify-start pr-1 gap-4"
 	>
 		<button value="home" on:click={handleClick} class={btnClass}>
 			<Home size="100%" class="w-6 pointer-events-none" tabindex="-1" />
@@ -82,7 +82,7 @@
 			<Cube class="w-6 pointer-events-none" tabindex="-1" size="100%" />
 			Projects
 		</button>
-		<button value="contact" on:click={handleClick} class="{btnClass} md:mr-1">
+		<button value="contact" on:click={handleClick} class={btnClass}>
 			<AtSymbol tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			Contact
 		</button>

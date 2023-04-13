@@ -42,7 +42,7 @@
 	};
 </script>
 
-<button on:click={handleThemeChange} class="ring-1 ring-current rounded-full p-1 w-10 md:w-12">
+<button on:click={handleThemeChange} class="ring-1 ring-current rounded-full p-1 w-8 md:w-10">
 	{#key isDark}
 		<div in:transverse={{}}>
 			<svelte:component
