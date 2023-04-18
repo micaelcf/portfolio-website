@@ -1,4 +1,8 @@
-<svg viewBox="0 0 128 128" width="100%">
+<script lang="ts">
+	export let size = '100%';
+</script>
+
+<svg viewBox="0 0 128 128" width={size} height={size} {...$$props}>
 	<path
 		fill="#0076b2"
 		d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3z"

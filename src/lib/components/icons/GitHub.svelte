@@ -1,4 +1,8 @@
-<svg viewBox="0 0 128 128" width="100%">
+<script lang="ts">
+	export let size = '100%';
+</script>
+
+<svg viewBox="0 0 128 128" width={size} height={size} {...$$props}>
 	<g class="fill-[#181616] dark:fill-white transti duration-700">
 		<path
 			fill-rule="evenodd"

@@ -8,18 +8,18 @@
 	import { page } from '$app/stores';
 	let mainDiv: Element;
 	let active: Element;
+	let cloud: Element;
 
 	const moveCloud = (el: Element) => {
 		const pad = 10;
 		const rect = el.getBoundingClientRect();
 		anime({
-			targets: '#cloud',
-			width: rect.width + pad,
-			height: rect.height + pad,
-			top: rect.top - pad / 2,
-			left: rect.left - pad / 2,
+			targets: cloud,
+			width: rect.width,
+			top: rect.bottom + 3,
+			left: rect.left,
 			easing: 'spring',
-			duration: 1000,
+			duration: 500,
 			endDelay: 300
 		});
 	};
@@ -46,7 +46,7 @@
 		const btns = Array.from(mainDiv.children) as HTMLButtonElement[];
 		if (!active) {
 			updateActive(btns);
-			moveCloud(active);
+			// moveCloud(active);
 		}
 
 		btns.forEach((el) => {
@@ -55,6 +55,21 @@
 			mainDiv.addEventListener('mouseout', () => moveCloud(active));
 			mainDiv.addEventListener('focusout', () => moveCloud(active));
 		});
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					moveCloud(active);
+					// console.log('nav is visible');
+					// execute a ação que você deseja quando o elemento estiver visível
+					// por exemplo, adicione uma classe CSS ou faça uma animação
+
+					observer.disconnect();
+				}
+			},
+			{ threshold: 1 }
+		);
+
+		observer.observe(mainDiv);
 	});
 
 	const btnClass = `flex flex-col md:flex-row gap-px md:gap-1 p-0 items-center`;
@@ -68,7 +83,7 @@
 <div class="">
 	<div
 		bind:this={mainDiv}
-		class=" w-full absolute top-0 z-10 md:py-3 md:pl-5 flex flex-row items-center justify-evenly md:justify-start pr-1 gap-4"
+		class="w-full absolute top-0 z-10 md:py-3 md:pl-5 flex flex-row items-center justify-evenly md:justify-start pr-1 gap-4"
 	>
 		<button value="home" on:click={handleClick} class={btnClass}>
 			<Home size="100%" class="w-6 pointer-events-none" tabindex="-1" />
@@ -87,8 +102,9 @@
 			Contact
 		</button>
 	</div>
-	<div
+	<!-- <div
 		id="cloud"
-		class="absolute z-0 right-0 shadow-[0px_4px_0px_-1px_rgb(236,72,153)] dark:shadow-[0px_4px_0px_-1px_rgb(163,230,53)]"
-	/>
+		class="absolute z-0 left-0 shadow-[0px_4px_0px_-1px_rgb(236,72,153)] dark:shadow-[0px_4px_0px_-1px_rgb(163,230,53)]"
+	/> -->
+	<div bind:this={cloud} class="absolute left-0 z-0 h-1 bg-default" />
 </div>

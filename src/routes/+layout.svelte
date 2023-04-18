@@ -7,12 +7,14 @@
 	import '../app.postcss';
 	import { getScrollPercent } from '$lib/utils';
 	import Footer from '$lib/components/Footer.svelte';
+	import Pizza from '$lib/components/Pizza.svelte';
 
 	onMount(() => {
 		// self.addEventListener('scroll', () => {
-		// 	console.log(getScrollPercent());
+		// 	// console.log(getScrollPercent());
+		// 	console.log('denis');
 		// });
-		currentPage.set($page.route.id?.replace('/', '') as string);
+		// currentPage.set($page.route.id?.replace('/', '') as string);
 	});
 </script>
 
@@ -28,5 +30,10 @@
 			<div class="absolute md:top-0 right-0 -mt-10 md:mt-2 mr-2 z-50"><ThemeToggle /></div>
 			<Footer />
 		</div>
+	{:else}
+		<div class="absolute bottom-0 md:bottom-auto md:top-0 right-0 mb-2 md:mb-0 md:mt-2 mr-2 z-50">
+			<ThemeToggle />
+		</div>
 	{/if}
 </div>
+<Pizza />
