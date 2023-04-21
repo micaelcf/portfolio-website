@@ -62,7 +62,7 @@
 	function getL(n: number = 8) {
 		let res = ``;
 		for (let i = 1; i <= n; i++) {
-			res += `-${i}px -${i}px 0px 0px rgb(63,63,63), `;
+			res += `-${i}px -${i}px 0px 0px var(--tw-shadow-color), `;
 		}
 		res = res.slice(0, -2);
 		return res;
@@ -75,6 +75,7 @@
 			translateY: 9,
 			boxShadow: getL(9),
 			duration: 1000,
+			delay: 1000,
 			easing: 'easeOutCubic'
 		});
 	});
@@ -185,12 +186,15 @@
 				</p>
 			</div>
 		</div>
-		<div bind:this={profile} class="bg-default rounded-lg h-fit w-fit overflow-hidden">
+		<div
+			bind:this={profile}
+			class="bg-default rounded-lg h-fit w-fit overflow-hidden shadow-[#3e3e3e] dark:shadow-gray-200 transition-colors duration-700 ease-out"
+		>
 			<img src={avatar2} alt="Micael Fernandes" />
 		</div>
 
 		<!-- Skills -->
-		<div class="w-full max-w-2xl h-full max-md:min-h-[390px] flex flex-col">
+		<div class="w-full h-full max-md:min-h-[390px] flex flex-col">
 			<h1 class="text-2xl text-colored-default text-center mb-2 md:mb-4 font-bold">Skills</h1>
 			<Skills {tabs} />
 		</div>

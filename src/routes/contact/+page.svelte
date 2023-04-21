@@ -56,8 +56,6 @@
 	let someKey = 0;
 </script>
 
-<svelte:head />
-
 <div class=" w-full min-h-screen flex flex-col items-center">
 	<h1 class="text-4xl mt-16 mb-10">Contact</h1>
 

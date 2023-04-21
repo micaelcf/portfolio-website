@@ -1,5 +1,6 @@
 import animeLogo from './assets/anime-logo.png';
 import gedae from './assets/gedae.webp';
+import weatherPicker from './assets/wetp.webp';
 import { writable } from 'svelte/store';
 import GitHub from '$lib/components/icons/GitHub.svelte';
 import { GlobeAlt } from 'svelte-heros-v2';
@@ -303,7 +304,7 @@ export const projects: ProjectProps[] = [
         url: 'https://fp-weatherpicker.netlify.app/'
       }
     ],
-    image: 'https://github.com/FirerPlayer/Weather-Picker-react/raw/main/example.jpg'
+    image: weatherPicker
   },
   {
     title: 'RNA ETHprice',

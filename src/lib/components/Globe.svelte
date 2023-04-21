@@ -48,15 +48,15 @@
 				x: e.clientX - pointerInteractingMovement.x,
 				y: e.clientY - pointerInteractingMovement.y
 			};
-			canvas.style.cursor = 'grabbing';
+			// canvas.style.cursor = 'grabbing';
 		}}
 		on:pointerup={() => {
 			pointerInteracting = null;
-			canvas.style.cursor = 'grab';
+			// canvas.style.cursor = 'grab';
 		}}
 		on:pointerout={() => {
 			pointerInteracting = null;
-			canvas.style.cursor = 'grab';
+			// canvas.style.cursor = 'grab';
 		}}
 		on:pointermove={(e) => {
 			if (pointerInteracting) {
@@ -81,7 +81,7 @@
 			}
 		}}
 		style="box-shad6ow: inset 0 0 15px 2px rgba(0, 0, 0, 0.5);"
-		class="w-full md:w-[350px] h-[350px]"
+		class="w-full md:w-[500px] h-[350px] md:h-[500px] active:cursor-grabbing cursor-grab"
 	/>
 	<div class="flex items-center p-2 rounded-lg w-fit">
 		<MapPin size="100%" class="text-blue-500 w-10" />

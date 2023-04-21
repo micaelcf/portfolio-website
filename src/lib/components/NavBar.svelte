@@ -42,20 +42,20 @@
 	}
 
 	onMount(() => {
-		const btns = Array.from(mainDiv.children) as HTMLButtonElement[];
-		if (!active) {
-			updateActive(btns);
-		}
-
-		btns.forEach((el) => {
-			el.addEventListener('mouseover', handleHover);
-			el.addEventListener('focusin', handleHover);
-			mainDiv.addEventListener('mouseout', () => moveCloud(active));
-			mainDiv.addEventListener('focusout', () => moveCloud(active));
-		});
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
+					const btns = Array.from(mainDiv.children) as HTMLButtonElement[];
+					if (!active) {
+						updateActive(btns);
+					}
+
+					btns.forEach((el) => {
+						el.addEventListener('mouseover', handleHover);
+						el.addEventListener('focusin', handleHover);
+						mainDiv.addEventListener('mouseout', () => moveCloud(active));
+						mainDiv.addEventListener('focusout', () => moveCloud(active));
+					});
 					moveCloud(active);
 					// console.log('nav is visible');
 					// execute a ação que você deseja quando o elemento estiver visível
@@ -83,19 +83,19 @@
 		bind:this={mainDiv}
 		class="w-full absolute top-0 z-10 md:py-3 md:pl-5 flex flex-row items-center justify-evenly md:justify-start pr-1 gap-4"
 	>
-		<button value="home" on:click={handleClick} class={btnClass}>
+		<button aria-label="home" value="home" on:click={handleClick} class={btnClass}>
 			<Home size="100%" class="w-6 pointer-events-none" tabindex="-1" />
 			Home
 		</button>
-		<button value="about" on:click={handleClick} class={btnClass}>
+		<button aria-label="about" value="about" on:click={handleClick} class={btnClass}>
 			<Identification tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			About
 		</button>
-		<button value="projects" on:click={handleClick} class={btnClass}>
+		<button aria-label="projects" value="projects" on:click={handleClick} class={btnClass}>
 			<Cube class="w-6 pointer-events-none" tabindex="-1" size="100%" />
 			Projects
 		</button>
-		<button value="contact" on:click={handleClick} class={btnClass}>
+		<button aria-label="contact" value="contact" on:click={handleClick} class={btnClass}>
 			<AtSymbol tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			Contact
 		</button>

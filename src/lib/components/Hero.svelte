@@ -40,7 +40,7 @@
 					color="currentColor"
 					variation="solid"
 					size="100%"
-					class="inline-block h-fit w-[18px] md:w-6"
+					class="inline-block h-fit w-[18px] md:w-6 pointer-events-none"
 				/>
 				<span>Full stack</span> developer at heart, with an emphasis on the
 				<span>front-end</span>
@@ -49,6 +49,7 @@
 		</div>
 		<div class="flex flex-row mt-3 pop w-fit">
 			<a
+				aria-label="Linkedin"
 				href="https://www.linkedin.com/in/micael-fernandes21/"
 				target="_blank"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
@@ -56,6 +57,7 @@
 				<LinkedIn />
 			</a>
 			<a
+				aria-label="GitHub"
 				href="https://github.com/FirerPlayer"
 				target="_blank"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
@@ -69,10 +71,10 @@
 	<div class="w-fit md:ml-12 flex justify-center">
 		<div class="z-[2]" bind:clientWidth={profileWidht}>
 			<img
-				style="clip-path: url(#blob);width: {profileWidht}px;"
+				style="clip-path: url(#blob);"
+				width="{profileWidht}px"
 				src={avatar}
 				alt="Micael Fernandes"
-				class="w]"
 			/>
 		</div>
 
