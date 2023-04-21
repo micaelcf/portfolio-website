@@ -81,7 +81,7 @@
 </script>
 
 <div class="standard-container-col">
-	<h1 class="text-2xl w-56 text-colored-default mb-1 md:mb-2 font-bold ml-3">Timeline</h1>
+	<h1 class="text-2xl max-w-[224px] text-colored-default mb-1 md:mb-2 font-bold ml-3">Timeline</h1>
 	<div bind:this={timelineDiv} class="flex flex-col items-start gap-10">
 		{#each items as item}
 			<TimelineItem data={item} />

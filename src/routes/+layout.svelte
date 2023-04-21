@@ -40,9 +40,12 @@
 </svelte:head>
 
 <div class="bg-slate-200 dark:bg-[#001220] dark:text-white transition-colors duration-700 ease-out">
-	<div class="hisdden mdd: absolute bottom-0 right-0 m-2 z-50" />
 	<NavBar />
-	<slot />
+
+	<main class="overflow-hidden">
+		<slot />
+	</main>
+
 	{#if $page.route.id != '/'}
 		<div class="mt-20">
 			<div class="absolute md:top-0 right-0 -mt-10 md:mt-2 mr-2 z-50"><ThemeToggle /></div>

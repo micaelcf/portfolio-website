@@ -24,7 +24,7 @@
 	</h1>
 
 	<div class="line" />
-	<h1 class="md:text-lg w-48">{@html data.label}</h1>
+	<h1 class="md:text-lg max-w-[192px]">{@html data.label}</h1>
 </div>
 
 <style>
