@@ -7,7 +7,7 @@
 
 	const getTitle = (id: string | null) => {
 		const mId = id?.split('/')[1];
-		const sufix = ' | Portfolio';
+		const sufix = ' | Micael Portfolio';
 		if (!mId) {
 			return 'Home' + sufix;
 		}
@@ -19,7 +19,7 @@
 		const selector = ti.split(' | ')[0].toLowerCase();
 		switch (selector) {
 			case 'home':
-				return 'A home page of my portfolio, including a short bio and main links.';
+				return "I'm Micael and this is the home page of my portfolio, including a short bio and main links.";
 			case 'about':
 				return "A brief description of myself and profissional experience. \
 				Take a look at all the technologies I've used or studied.It has a small timeline of my history with technology";

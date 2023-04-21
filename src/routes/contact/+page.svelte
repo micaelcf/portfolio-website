@@ -50,7 +50,7 @@
 		notyf = new Notyf({ duration: 3500, position: { x: 'right', y: 'top' } });
 	});
 
-	let inputClass = `focus:outline-none rounded-b-lg rounded-tr-lg px-2 py-1 b bg-slate-500 dark:bg-slate-800 bg-opacity-10 border-2 border-black dark:border-white`;
+	let inputClass = `focus:outline-none rounded-b-lg rounded-tr-lg px-2 py-1 b bg-slate-500 dark:bg-zinc-900 bg-opacity-10 border-2 border-black dark:border-white`;
 	let labelClass = `mt-2 text-base md:text-lg font-semibold w-fit px-2 rounded-t-xl border-t-2 border-x-2 border-black dark:border-white transition-colors duration-500 ease-out`;
 	let showConfetti = false;
 	let someKey = 0;
