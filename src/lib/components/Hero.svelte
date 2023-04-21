@@ -2,10 +2,10 @@
 	import { ComputerDesktop } from 'svelte-heros-v2';
 	import LinkedIn from '$lib/components/icons/LinkedIn.svelte';
 	import GitHub from '$lib/components/icons/GitHub.svelte';
-	import avatar from '$lib/assets/avatar.jpg';
+	import avatar from '$lib/assets/avatar.webp';
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
-	import { blobPaths } from '$lib/utils';
+	import { blobPaths } from '$lib/stores';
 
 	let profileWidht: number = 350;
 	let sc: number = 0.67;

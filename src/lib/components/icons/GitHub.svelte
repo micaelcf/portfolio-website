@@ -3,7 +3,7 @@
 </script>
 
 <svg viewBox="0 0 128 128" width={size} height={size} {...$$props}>
-	<g class="fill-[#181616] dark:fill-white transti duration-700">
+	<g class="fill-current transti duration-700">
 		<path
 			fill-rule="evenodd"
 			clip-rule="evenodd"

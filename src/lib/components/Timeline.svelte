@@ -19,7 +19,6 @@
 				ref.getBoundingClientRect().width / 2 -
 				progress.getBoundingClientRect().width / 2
 		});
-		// console.log('updatePosition');
 	};
 	const timeDuration = 3000;
 	const progressAnim = (h: number) => {

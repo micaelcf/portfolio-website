@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getSkillIcon } from '$lib/stores';
 	import anime from 'animejs';
 	import { onMount } from 'svelte';
 	import { CodeBracketSquare, Gift } from 'svelte-heros-v2';
 	import { slide } from 'svelte/transition';
-	import GitHub from './icons/GitHub.svelte';
 	let mainDiv: Element;
 	let techsDiv: Element;
 	let links: Element;
@@ -14,16 +14,18 @@
 		Open
 	}
 	const openCloseCard = (opening: number) => {
+		const linkWidth = links.getBoundingClientRect().width;
+		const techWidth = techsDiv.getBoundingClientRect().width;
 		anime({
 			targets: links.children,
-			translateX: opening ? -links.getBoundingClientRect().width : 0,
+			translateX: opening ? -linkWidth : 0,
 			easing: 'easeOutExpo',
 			duration: 600,
 			delay: anime.stagger(125, { start: 400 })
 		});
 		anime({
 			targets: techsDiv.children,
-			translateX: opening ? techsDiv.getBoundingClientRect().width : 0,
+			translateX: opening ? techWidth : 0,
 			easing: 'easeOutExpo',
 			duration: 600,
 			delay: anime.stagger(125, { start: 400 })
@@ -100,26 +102,35 @@
 	};
 </script>
 
+<!-- w-[300px] h-[210px] md:w-[350px] md:h-[260px] -->
 <div
 	bind:this={mainDiv}
-	class="inline-grid w-[300px] h-[210px] md:w-[350px] md:h-[260px] [&>div]:col-start-1 [&>div]:row-start-1"
+	class="inline-grid w-[290px] md:w-[350px] h-[300px] max-w-md [&>div]:col-start-1 [&>div]:row-start-1 text-black"
 >
-	<div class="z-10 p-1 bg-default basdg-opacity-60 w-full h-fit overflow-hidden">
+	<div class="z-10 p-1 bg-default w-full h-fit overflow-hidden">
 		<h1 class="text-2xl font-bold">{projectProps.title}</h1>
 	</div>
 	{#if projectProps.image}
 		<div
 			style="background-image: url({projectProps.image});"
-			class=" flex flex-col justify-between bg-cover z-[2]"
+			class=" flex flex-col justify-between bg-cover bg-center z-[2]"
 		/>
 	{:else}
-		<div class="bg-slate-300 z-[2] flex items-center justify-center">
-			<CodeBracketSquare size="80px" class="mt-6" />
+		<div class="bg-slate-300 dark:bg-slate-700 z-[2] flex items-center justify-center">
+			<CodeBracketSquare size="80px" class="mt-6 pointer-events-none" tabindex="-1" />
 		</div>
 	{/if}
 	<div bind:this={links} class="w-fit h-fit [&>div]:bg-default z-[1] grid">
 		{#each projectProps.links as link}
-			<div class="w-[40px] h-[40px] md:w-[60px] md:h-[60px]">
+			<div
+				class="w-[45px] md:w-14 p1"
+				on:focusin={() => {
+					openCloseCard(CardAction.Open);
+				}}
+				on:focusout={() => {
+					openCloseCard(CardAction.Open);
+				}}
+			>
 				<a target="_blank" href={link.url}>
 					<svelte:component this={link.icon} size="100%" tabindex="-1" />
 				</a>
@@ -134,10 +145,16 @@
 			<p class="text-sm md:text-base">{projectProps.description}</p>
 		</div>
 	{/if}
-	<div bind:this={techsDiv} class="grid h-fit w-fit justify-self-end">
+	<div
+		bind:this={techsDiv}
+		class="grid space-y-1 md:space-y-0 h-fit w-fit bg-black justify-self-end -translate-x-px"
+	>
 		{#each projectProps.tech as tech}
-			<div>
-				<span class="text-xs md:text-sm font-semibold">{tech} </span>
+			<div class="flex items-center">
+				<div class="hidden md:block text-xs md:text-sm font-semibold bg-default w-fit p-1">
+					{tech}
+				</div>
+				<div class="w-6 ml-2 md:ml-1">{@html getSkillIcon(tech)}</div>
 			</div>
 		{/each}
 	</div>

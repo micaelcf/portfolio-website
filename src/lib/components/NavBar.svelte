@@ -11,7 +11,6 @@
 	let cloud: Element;
 
 	const moveCloud = (el: Element) => {
-		const pad = 10;
 		const rect = el.getBoundingClientRect();
 		anime({
 			targets: cloud,
@@ -46,7 +45,6 @@
 		const btns = Array.from(mainDiv.children) as HTMLButtonElement[];
 		if (!active) {
 			updateActive(btns);
-			// moveCloud(active);
 		}
 
 		btns.forEach((el) => {
@@ -102,9 +100,5 @@
 			Contact
 		</button>
 	</div>
-	<!-- <div
-		id="cloud"
-		class="absolute z-0 left-0 shadow-[0px_4px_0px_-1px_rgb(236,72,153)] dark:shadow-[0px_4px_0px_-1px_rgb(163,230,53)]"
-	/> -->
 	<div bind:this={cloud} class="absolute left-0 z-0 h-1 bg-default" />
 </div>

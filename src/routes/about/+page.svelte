@@ -1,10 +1,8 @@
 <script lang="ts">
 	import Timeline from '$lib/components/Timeline.svelte';
-	import avatar2 from '$lib/assets/avatar2.png';
+	import avatar2 from '$lib/assets/avatar2.webp';
 	import {
 		AcademicCap,
-		ArrowDown,
-		ArrowUp,
 		BuildingOffice,
 		ChevronDown,
 		ChevronUp,
@@ -109,8 +107,8 @@
 	let showMore = false;
 </script>
 
-<div class="w-full min-h-screen h-fit flex flex-col md:p-0">
-	<h1 id="hed" class="w-fit self-center mt-16 mb-5 md:mb-10 text-6xl">
+<div class="w-full min-h-screen h-fit standard-container-col md:p-0">
+	<h1 id="hed" class="w-fit mt-16 mb-5 md:mb-10 text-6xl">
 		Passion Fuels Purpose!<span class="text-5xl md:text-6xl">🔥</span>
 	</h1>
 

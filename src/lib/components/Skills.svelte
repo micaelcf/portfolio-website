@@ -27,8 +27,6 @@
 			anime({ targets: tget, marginTop: 0, duration: 300, easing: 'easeOutCubic' });
 			return;
 		}
-		const h = tget.getBoundingClientRect().height;
-		const w = tget.getBoundingClientRect().width;
 		anime({
 			targets: tget,
 			marginTop: [0, -10],
@@ -61,7 +59,6 @@
 				transition:slide
 			>
 				{#each tab.skills as skill}
-					<!-- <div class="flex flex-col justify-center items-center gap-1 md:gap-2"> -->
 					<a
 						target="_blank"
 						href={skill.link}
@@ -71,17 +68,11 @@
 							{@html skill.icon}
 						</div>
 						<p class="w-fit text-sm md:text-base">
-							<!-- <a target="_blank" href={skill.link} class="w-fit text-sm md:text-base"> -->
 							{skill.name}
-							<!-- </a> -->
 						</p>
 					</a>
-					<!-- </div> -->
 				{/each}
 			</div>
 		{/if}
 	{/each}
 </div>
-
-<style>
-</style>
