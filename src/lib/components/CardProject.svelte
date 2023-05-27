@@ -13,7 +13,7 @@
 		Close,
 		Open
 	}
-	const openCloseCard = (opening: number) => {
+	const openCloseCard = (opening: CardAction) => {
 		const linkWidth = links.getBoundingClientRect().width;
 		const techWidth = techsDiv.getBoundingClientRect().width;
 		anime({
