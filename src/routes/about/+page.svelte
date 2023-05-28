@@ -33,7 +33,7 @@
 		},
 		{
 			date: new Date('2020-02-02'),
-			label: 'Experience with Python and Java with POO. Backend and ML projects',
+			label: 'Experience with Python, Java and Go with POO. Backend and ML projects',
 			icon: Cube
 		},
 		{
@@ -128,7 +128,8 @@
 				</p>
 				<p>
 					{@html tabCaracter}My professional experience gave me a lot of knowledge with python,
-					javascript with Node, teamwork and application of design patterns.
+					javascript with Node, robust API development with Go, teamwork and application of design
+					patterns.
 				</p>
 				{#if showMore}
 					<div transition:showMoreTransition={{}} class="overflow-hidden">
