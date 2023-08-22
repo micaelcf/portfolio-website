@@ -6,6 +6,8 @@
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
 	import { blobPaths } from '$lib/stores';
+	import Resume from './icons/Resume.svelte';
+	import Email from './icons/Email.svelte';
 
 	let profileWidht: number = 350;
 	let sc: number = 0.67;
@@ -52,17 +54,37 @@
 				aria-label="Linkedin"
 				href="https://www.linkedin.com/in/micael-fernandes21/"
 				target="_blank"
+				title="LinkedIn"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
 			>
 				<LinkedIn />
 			</a>
 			<a
 				aria-label="GitHub"
+				title="GitHub"
 				href="https://github.com/FirerPlayer"
 				target="_blank"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
 			>
 				<GitHub />
+			</a>
+			<a
+				aria-label="Email"
+				title="Email"
+				href="mailto:micaelf81@gmail.com"
+				target="_blank"
+				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
+			>
+				<Email />
+			</a>
+			<a
+				aria-label="Resume"
+				title="Resume"
+				href="https://drive.google.com/file/d/1GG6pmEDxKgBPCaMu639jGijcZDJfnfnY/view?usp=sharing"
+				target="_blank"
+				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
+			>
+				<Resume />
 			</a>
 		</div>
 	</div>

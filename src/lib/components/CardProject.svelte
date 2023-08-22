@@ -128,10 +128,10 @@
 					openCloseCard(CardAction.Open);
 				}}
 				on:focusout={() => {
-					openCloseCard(CardAction.Open);
+					openCloseCard(CardAction.Close);
 				}}
 			>
-				<a target="_blank" href={link.url}>
+				<a target="_blank" href={link.url} title={link.name}>
 					<svelte:component this={link.icon} size="100%" tabindex="-1" />
 				</a>
 			</div>
