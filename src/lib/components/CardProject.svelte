@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getSkillIcon } from '$lib/stores';
 	import anime from 'animejs';
-	import { onMount } from 'svelte';
+	import { ComponentType, onMount } from 'svelte';
 	import { CodeBracketSquare, Gift } from 'svelte-heros-v2';
 	import { slide } from 'svelte/transition';
 	let mainDiv: Element;
@@ -59,17 +59,17 @@
 		});
 	});
 
-	interface ProjectProps {
+	type ProjectProps = {
 		title: string;
 		description: string;
 		tech: string[];
 		links: {
 			name: string;
-			icon: any;
+			icon: ComponentType;
 			url: string;
 		}[];
 		image: string;
-	}
+	};
 
 	export let projectProps: ProjectProps = {
 		title: 'Project Title',

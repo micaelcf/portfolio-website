@@ -5,12 +5,12 @@
 	import avatar from '$lib/assets/avatar.webp';
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
-	import { blobPaths } from '$lib/stores';
+	import { blobPaths, RESUME_URL } from '$lib/stores';
 	import Resume from './icons/Resume.svelte';
 	import Email from './icons/Email.svelte';
 
-	let profileWidht: number = 350;
-	let sc: number = 0.67;
+	let profileWidht = 350;
+	let scale = 0.67;
 
 	onMount(() => {
 		const firstPath = document.querySelector('.blobPath')?.getAttribute('d') as string;
@@ -55,6 +55,7 @@
 				href="https://www.linkedin.com/in/micael-fernandes21/"
 				target="_blank"
 				title="LinkedIn"
+				rel="noopener noreferrer"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
 			>
 				<LinkedIn />
@@ -62,8 +63,9 @@
 			<a
 				aria-label="GitHub"
 				title="GitHub"
-				href="https://github.com/FirerPlayer"
+				href="https://github.com/micaelcf"
 				target="_blank"
+				rel="noopener noreferrer"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
 			>
 				<GitHub />
@@ -73,6 +75,7 @@
 				title="Email"
 				href="mailto:micaelf81@gmail.com"
 				target="_blank"
+				rel="noopener noreferrer"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
 			>
 				<Email />
@@ -80,8 +83,9 @@
 			<a
 				aria-label="Resume"
 				title="Resume"
-				href="https://drive.google.com/file/d/1GG6pmEDxKgBPCaMu639jGijcZDJfnfnY/view?usp=sharing"
+				href={RESUME_URL}
 				target="_blank"
+				rel="noopener noreferrer"
 				class="w-12 p-2 hover:bg-black/20 hover:dark:bg-white/20"
 			>
 				<Resume />
@@ -113,7 +117,7 @@
 				<clipPath id="blob">
 					<path
 						class="blobPath"
-						transform="translate({profileWidht / 2} {profileWidht / 2}) scale({sc})"
+						transform="translate({profileWidht / 2} {profileWidht / 2}) scale({scale})"
 						d="M138.6 -134.9C177.3 -99.9 204.6 -50 215 10.4C225.4 70.7 218.8 141.4 180.1 182.4C141.4 223.4 70.7 234.7 0.8 233.9C-69.1 233.1 -138.1 220.1 -182 179.1C-225.8 138.1 -244.4 69.1 -227.5 16.9C-210.7 -35.4 -158.4 -70.7 -114.5 -105.7C-70.7 -140.7 -35.4 -175.4 7.3 -182.7C50 -190 99.9 -169.9 138.6 -134.9"
 					/>
 				</clipPath>
@@ -121,7 +125,7 @@
 			<g>
 				<path
 					class="blobPath stroke-pink-500 dark:stroke-lime-500"
-					transform="translate({profileWidht / 2} {profileWidht / 2}) scale({sc})"
+					transform="translate({profileWidht / 2} {profileWidht / 2}) scale({scale})"
 					d="M138.6 -134.9C177.3 -99.9 204.6 -50 215 10.4C225.4 70.7 218.8 141.4 180.1 182.4C141.4 223.4 70.7 234.7 0.8 233.9C-69.1 233.1 -138.1 220.1 -182 179.1C-225.8 138.1 -244.4 69.1 -227.5 16.9C-210.7 -35.4 -158.4 -70.7 -114.5 -105.7C-70.7 -140.7 -35.4 -175.4 7.3 -182.7C50 -190 99.9 -169.9 138.6 -134.9"
 					fill="none"
 					stroke-width="10"

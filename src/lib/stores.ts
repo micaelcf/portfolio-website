@@ -7,6 +7,9 @@ import { writable } from 'svelte/store';
 import GitHub from '$lib/components/icons/GitHub.svelte';
 import { GlobeAlt } from 'svelte-heros-v2';
 
+export const RESUME_URL =
+	'https://drive.google.com/file/d/1i5Uxgwv8nxFznH4RUT_UmUgRG6BtiA5Z/view?usp=sharing' as const;
+
 export const scrollPercent = writable(0);
 
 export const currentPage = writable('home');
@@ -257,7 +260,7 @@ export const projects: ProjectProps[] = [
 			{
 				name: 'GitHub',
 				icon: GitHub,
-				url: 'https://github.com/firerplayer/roda-belem'
+				url: 'https://github.com/micaelcf/roda-belem'
 			},
 			{
 				name: 'Site',
@@ -276,7 +279,7 @@ export const projects: ProjectProps[] = [
 			{
 				name: 'GitHub',
 				icon: GitHub,
-				url: 'https://github.com/firerplayer/roda-belem-service'
+				url: 'https://github.com/micaelcf/roda-belem-service'
 			}
 		],
 		image: rodaService
@@ -289,7 +292,7 @@ export const projects: ProjectProps[] = [
 			{
 				name: 'GitHub',
 				icon: GitHub,
-				url: 'https://github.com/FirerPlayer/GEDAE-website'
+				url: 'https://github.com/micaelcf/GEDAE-website'
 			},
 			{
 				name: 'Site',
@@ -308,7 +311,7 @@ export const projects: ProjectProps[] = [
 			{
 				name: 'GitHub',
 				icon: GitHub,
-				url: 'https://github.com/FirerPlayer/Weather-Picker-react'
+				url: 'https://github.com/micaelcf/Weather-Picker-react'
 			},
 			{
 				name: 'Site',
@@ -327,7 +330,7 @@ export const projects: ProjectProps[] = [
 			{
 				name: 'GitHub',
 				icon: GitHub,
-				url: 'https://github.com/FirerPlayer/RNA_python-ETHprice'
+				url: 'https://github.com/micaelcf/RNA_python-ETHprice'
 			}
 		],
 		image: ''
