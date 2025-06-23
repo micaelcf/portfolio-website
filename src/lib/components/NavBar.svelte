@@ -2,8 +2,6 @@
 	import { AtSymbol, Cube, Home, Identification } from 'svelte-heros-v2';
 	import { onMount } from 'svelte/internal';
 	import anime from 'animejs';
-	import { currentPage } from '$lib/stores';
-	import { goto } from '$app/navigation';
 
 	import { page } from '$app/stores';
 	let mainDiv: Element;
@@ -23,29 +21,23 @@
 		});
 	};
 	function handleClick(ev: Event) {
-		let value = (ev.target as HTMLButtonElement).value;
-		goto(value === 'home' ? '/' : value);
-		active = ev.target as HTMLButtonElement;
+		active = ev.target as HTMLAnchorElement;
 	}
 
 	function handleHover(ev: Event) {
 		moveCloud(ev.target as Element);
 	}
 
-	export function updateActive(btns: HTMLButtonElement[]) {
+	export function updateActive(btns: HTMLAnchorElement[]) {
 		let route = $page.route.id?.replace('/', '') as string;
-		btns.forEach((el) => {
-			if (el.value === $currentPage || el.value === route) {
-				active = el;
-			}
-		});
+		active = btns.find((el) => el.href.replace('/', '') === route) ?? btns[0];
 	}
 
 	onMount(() => {
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
-					const btns = Array.from(mainDiv.children) as HTMLButtonElement[];
+					const btns = Array.from(mainDiv.children) as HTMLAnchorElement[];
 					if (!active) {
 						updateActive(btns);
 					}
@@ -83,22 +75,22 @@
 		bind:this={mainDiv}
 		class="w-full absolute top-0 z-10 md:py-3 md:pl-5 flex flex-row items-center justify-evenly md:justify-start pr-1 gap-4"
 	>
-		<button aria-label="home" value="home" on:click={handleClick} class={btnClass}>
+		<a aria-label="home" href="/" on:click={handleClick} class={btnClass}>
 			<Home size="100%" class="w-6 pointer-events-none" tabindex="-1" />
 			Home
-		</button>
-		<button aria-label="about" value="about" on:click={handleClick} class={btnClass}>
+		</a>
+		<a aria-label="about" href="/about" on:click={handleClick} class={btnClass}>
 			<Identification tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			About
-		</button>
-		<button aria-label="projects" value="projects" on:click={handleClick} class={btnClass}>
+		</a>
+		<a aria-label="projects" href="/projects" on:click={handleClick} class={btnClass}>
 			<Cube class="w-6 pointer-events-none" tabindex="-1" size="100%" />
 			Projects
-		</button>
-		<button aria-label="contact" value="contact" on:click={handleClick} class={btnClass}>
+		</a>
+		<a aria-label="contact" href="/contact" on:click={handleClick} class={btnClass}>
 			<AtSymbol tabindex="-1" size="100%" class="w-6 pointer-events-none" />
 			Contact
-		</button>
+		</a>
 	</div>
 	<div bind:this={cloud} class="absolute left-0 z-0 h-1 bg-default" />
 </div>
