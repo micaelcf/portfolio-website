@@ -244,7 +244,7 @@ interface ProjectProps {
 	tech: string[];
 	links: {
 		name: string;
-		icon: unknown;
+		icon: any;
 		url: string;
 	}[];
 	image: string;

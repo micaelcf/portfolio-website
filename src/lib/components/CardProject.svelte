@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getSkillIcon } from '$lib/stores';
 	import anime from 'animejs';
-	import { ComponentType, onMount } from 'svelte';
+	import { SvelteComponent, onMount } from 'svelte';
 	import { CodeBracketSquare, Gift } from 'svelte-heros-v2';
 	import { slide } from 'svelte/transition';
 	let mainDiv: Element;
@@ -65,7 +65,7 @@
 		tech: string[];
 		links: {
 			name: string;
-			icon: ComponentType;
+			icon: any;
 			url: string;
 		}[];
 		image: string;
